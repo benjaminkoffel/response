@@ -3,9 +3,9 @@
 Some assorted scripts to assist incident response.
 
 ```
-# acquire forensic data from a server
-sh acquire.sh
+# acquire forensically relevant data and package into artefacts.tar.gz
+./acquire.sh
 
-# build timeline csv from file timestamps
+# build timeline csv from acquired file timestamps
 ./timeline.py files.txt 
 ```
