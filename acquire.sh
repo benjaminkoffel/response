@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 
+# USAGE: 
+# - execute as root on target host
+# - enter password to encrypt artefacts
+# - pull `artefacts.tar.gz` from host
+# - extract via `openssl enc -aes-256-cbc -d -in artefacts.tar.gz | tar -xzv`
+
 set -x
 
 date -u # print time
@@ -33,7 +39,7 @@ cp /etc/hosts artefacts/hosts.txt # host ips
 cp /etc/hosts.allow artefacts/hosts.allow.txt # allowed hosts
 cp /etc/hosts.deny artefacts/hosts.deny.txt # denied hosts
 cp -r /var/log artefacts # all logs
-tar -czvf artefacts.tar.gz artefacts # archive artefacts
+tar -czv artefacts | openssl enc -aes-256-cbc -e > artefacts.tar.gz # archive artefacts
 md5sum artefacts.tar.gz # print md5 of artefacts
 rm -rf artefacts # delete artefacts directory
 w # print logged in users
