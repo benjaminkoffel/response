@@ -21,9 +21,6 @@ ifconfig -a > artefacts/ifconfig.txt # network interfaces
 netstat -nputwa > artefacts/netstat.txt # network connections
 lsof -i -n > artefacts/lsof.txt # list open files
 ps -aux > artefacts/ps.txt # running processes
-ls -alR /proc/* > artefacts/proc.txt # list proc dir
-ls -al /etc/rc*.d > artefacts/rc.txt # startup services
-ls -al /etc/cron.* > artefacts/cron.txt # cron jobs
 iptables -L > artefacts/iptables.txt # firewall rules
 dpkg -l > artefacts/dpkg.txt # debian packages
 httpd -v > artefacts/httpd.txt # http daemon version
@@ -33,7 +30,6 @@ find /home/*/.bash_history -type f -print -exec cat {} \; > artefacts/bash_histo
 cp /etc/crontab artefacts/crontab.txt # crontab file
 cp /etc/sudoers artefacts/sudoers.txt # sudo config
 cp /etc/passwd artefacts/passwd.txt # users
-cp /etc/shadow artefacts/shadow.txt # passwords
 cp /etc/group artefacts/group.txt # groups
 cp /etc/hosts artefacts/hosts.txt # host ips
 cp /etc/hosts.allow artefacts/hosts.allow.txt # allowed hosts
